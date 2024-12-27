@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMove : MonoBehaviour
 {
-    Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
     [HideInInspector]
     public Vector3 movementVector;
     [HideInInspector]
@@ -23,6 +23,11 @@ public class PlayerMove : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         movementVector = new Vector3();
         animate = GetComponent<Animate>();
+    }
+    private void Start()
+    {
+        lastHorizontalVector = -1f;
+        lastVerticalVector = 1f;
     }
 
     // Update is called once per frame
