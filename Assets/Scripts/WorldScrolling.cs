@@ -25,6 +25,7 @@ public class WorldScrolling : MonoBehaviour
     private void Start()
     {
         UpdateTilesOnScreen();
+        playerTransform = GameManager.instance.playerTransform; 
     }
 
     private void Update()
@@ -60,7 +61,6 @@ public class WorldScrolling : MonoBehaviour
                     );
                 if(newPosition != tile.transform.position)
                 {
-                    print("aaa");
                     tile.transform.position = newPosition;
                     terrainTiles[tileToUpdate_x, tileToUpdate_y].GetComponent<TerainTile>().Spawn();
                 }

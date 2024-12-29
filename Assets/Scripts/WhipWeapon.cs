@@ -3,48 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhipWeapon : MonoBehaviour
+public class WhipWeapon : WeaponBase
 {
-    [SerializeField] float timeToAttack = 4f;
-    float timer;
-
     [SerializeField] GameObject leftWhipObject;
     [SerializeField] GameObject rightWhipObject;
 
     PlayerMove playerMove;
-    [SerializeField] Vector2 whipAttackSize = new Vector2(4f, 2f);
-    [SerializeField] int whipDamage = 1;
+    [SerializeField] Vector2 attackSize = new Vector2(4f, 2f);
+    
     private void Awake()
     {
         playerMove = GetComponentInParent<PlayerMove>();
     }
-    void Update()
-    {
-        timer -= Time.deltaTime;
-        if (timer < 0f)
-        {
-            Attack();
-        }
-    }
+    
 
-    private void Attack()
-    {
-        Debug.Log("Attack");
-        timer = timeToAttack;
-
-        if (playerMove.lastHorizontalVector > 0)
-        {
-            rightWhipObject.SetActive(true);
-            Collider2D[] colliders = Physics2D.OverlapBoxAll(rightWhipObject.transform.position, whipAttackSize, 0f);
-            ApplyDamage(colliders);
-        }
-        else
-        {
-            leftWhipObject.SetActive(true);
-            Collider2D[] colliders = Physics2D.OverlapBoxAll(leftWhipObject.transform.position, whipAttackSize, 0f);
-            ApplyDamage(colliders);
-        }
-    }
+    
 
     private void ApplyDamage(Collider2D[] colliders)
     {
@@ -52,7 +25,25 @@ public class WhipWeapon : MonoBehaviour
         {
             IDamageable e = colliders[i].GetComponent<IDamageable>();
             if(e != null)
-               e.TakeDamage(whipDamage);
+               e.TakeDamage(weaponStats.damage);
+        }
+    }
+
+    public override void Attack()
+    {
+        
+
+        if (playerMove.lastHorizontalVector > 0)
+        {
+            rightWhipObject.SetActive(true);
+            Collider2D[] colliders = Physics2D.OverlapBoxAll(rightWhipObject.transform.position, attackSize, 0f);
+            ApplyDamage(colliders);
+        }
+        else
+        {
+            leftWhipObject.SetActive(true);
+            Collider2D[] colliders = Physics2D.OverlapBoxAll(leftWhipObject.transform.position, attackSize, 0f);
+            ApplyDamage(colliders);
         }
     }
 }
