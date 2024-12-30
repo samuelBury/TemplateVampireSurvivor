@@ -9,12 +9,27 @@ public class Level : MonoBehaviour
     [SerializeField] ExperienceBar experienceBar;
     [SerializeField] UpgradePanelManager upgradePanel;
 
+    [SerializeField] List<UpgradeData> upgrades;
+    List<UpgradeData> selectedUpgrades;
+
+    [SerializeField] List<UpgradeData> acquiredUpgrade;
+
+    WeaponManager weaponManager;
+    private void Awake()
+    {
+        weaponManager = GetComponent<WeaponManager>(); 
+    }
     int TO_LEVEL_UP
     {
         get
         {
             return level * 1000; 
         }
+    }
+
+    public void AddUpgradesIntoTheListOfAvailableUpgrades(List<UpgradeData> upgradesToAdd)
+    {
+        this.upgrades.AddRange(upgradesToAdd);
     }
 
     private void Start()
@@ -39,9 +54,52 @@ public class Level : MonoBehaviour
 
     private void LevelUp()
     {
-        upgradePanel.OpenPanel();
+        if(selectedUpgrades == null) { selectedUpgrades = new List<UpgradeData>();  }
+        selectedUpgrades.Clear();
+        selectedUpgrades.AddRange(GetUpgrades(3));
+
+        upgradePanel.OpenPanel(selectedUpgrades);
         experience -= TO_LEVEL_UP;
         level += 1;
         experienceBar.SetLevelText(level);
+    }
+
+    public List<UpgradeData> GetUpgrades(int count)
+    {
+        List<UpgradeData> upgradeList = new List<UpgradeData>();
+        if (count > upgrades.Count)
+        {
+            count = upgrades.Count;
+        }
+
+        for(int i=0; i<count; i++)
+        {
+            upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+        }
+        
+
+        return upgradeList;
+    }
+    public void Upgrade(int selectedUpgradeId)
+    {
+        UpgradeData upgradeData = selectedUpgrades[selectedUpgradeId];
+        if(acquiredUpgrade == null) { acquiredUpgrade = new List<UpgradeData>(); }
+
+        switch (upgradeData.upgradeType)
+        {
+            case UpgradeType.WeaponUpgrade:
+                weaponManager.UpgradeWeapon(upgradeData);
+                break;
+            case UpgradeType.ItemUpgrade:
+                break;
+            case UpgradeType.WeaponUnlock:
+                weaponManager.AddWeapon(upgradeData.weaponData);
+                break;
+            case UpgradeType.ItemUnlock:
+                break;
+        }
+
+        acquiredUpgrade.Add(upgradeData);
+        upgrades.Remove(upgradeData);
     }
 }
