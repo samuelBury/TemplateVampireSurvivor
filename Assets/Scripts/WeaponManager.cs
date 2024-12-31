@@ -39,4 +39,6 @@ public class WeaponManager : MonoBehaviour
        WeaponBase weaponToUpgrade = weapons.Find(wd => wd.weaponData == upgradeData.weaponData);
         weaponToUpgrade.Upgrade(upgradeData);
     }
+
+  
 }

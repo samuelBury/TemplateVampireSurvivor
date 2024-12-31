@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DropOnDestroy : MonoBehaviour
 {
-    [SerializeField] GameObject dropItemPrefab;
+    [SerializeField] List<GameObject> dropItemPrefab;
     [SerializeField] [Range(0f, 1f)] float chance = 1f;
 
     bool isQuitting = false;
@@ -17,10 +17,23 @@ public class DropOnDestroy : MonoBehaviour
     {
         if (isQuitting) { return; }
 
+        if (dropItemPrefab.Count <= 0)
+        {
+            Debug.LogWarning("List of item is empty");
+            return;
+        }
+
         if(Random.value< chance)
         {
-            Transform t = Instantiate(dropItemPrefab).transform;
-            t.position = transform.position;
+            GameObject toDrop = dropItemPrefab[Random.Range(0, dropItemPrefab.Count)];
+
+            if(toDrop == null)
+            {
+                Debug.LogWarning("DropOnDestroy missinng items");
+                return;
+            }
+
+            SpawnManager.instance.SpawnObject(transform.position, toDrop);
         }
         
     }
