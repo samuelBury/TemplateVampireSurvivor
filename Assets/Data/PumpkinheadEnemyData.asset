@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Pumpkinhead Pitchfork
   animatedPrefabs: {fileID: 8394622138703024152, guid: 9a0352e04cb68214dba83ecde7e6eabb, type: 3}
   stats:
-    hp: 150
+    hp: 256
     damage: 70
     experience_reward: 500
     moveSpeed: 4

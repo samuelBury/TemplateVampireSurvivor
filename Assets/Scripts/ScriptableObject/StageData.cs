@@ -5,7 +5,8 @@ using UnityEngine;
 
 public enum StageEventType
 {
-    SpawnnEnemy,
+    SpawnEnemy,
+    SpawnEnemyBoss,
     SpawnObject,
     WinStage
 }

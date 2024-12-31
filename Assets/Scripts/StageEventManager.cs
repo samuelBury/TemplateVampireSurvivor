@@ -29,20 +29,20 @@ public class StageEventManager : MonoBehaviour
         {
             switch (stageData.stageEvents[eventIndexer].eventType)
             {
-                case StageEventType.SpawnnEnemy:
-                    for (int i = 0; i < stageData.stageEvents[eventIndexer].count; i++)
-                    {
-                        SpawnEnemy();
-                    }
+                case StageEventType.SpawnEnemy:
+                    SpawnEnemy(false);
                     break;
+
                 case StageEventType.SpawnObject:
-                    for (int i = 0; i < stageData.stageEvents[eventIndexer].count; i++)
-                    {
-                        SpawnObject();
-                    }
+                    SpawnObject();
                     break;
+
                 case StageEventType.WinStage:
                     WinStage();
+                    break;
+
+                case StageEventType.SpawnEnemyBoss:
+                        SpawnEnemyBoss();     
                     break;
             }
             Debug.Log(stageData.stageEvents[eventIndexer].message);
@@ -53,20 +53,33 @@ public class StageEventManager : MonoBehaviour
         }
     }
 
+    private void SpawnEnemyBoss()
+    {
+        SpawnEnemy(true);
+    }
+
     private void WinStage()
     {
         playerWin.Win();
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(bool bossEnnemy)
     {
-        enemiesManager.SpawnEnemy(stageData.stageEvents[eventIndexer].enemyToSpawn);
+        for (int i = 0; i < stageData.stageEvents[eventIndexer].count; i++)
+        {
+            enemiesManager.SpawnEnemy(stageData.stageEvents[eventIndexer].enemyToSpawn, bossEnnemy);
+        }
+            
     }
 
     private void SpawnObject()
     {
-        Vector2 positionToSpawn = GameManager.instance.playerTransform.position;
-        positionToSpawn += UtilityTools.GenerateRandomPositionSquarePattern(new Vector2(5f, 5f));
-        SpawnManager.instance.SpawnObject(positionToSpawn, stageData.stageEvents[eventIndexer].objectToSpawn);
+        for (int i = 0; i < stageData.stageEvents[eventIndexer].count; i++)
+        {
+            Vector2 positionToSpawn = GameManager.instance.playerTransform.position;
+            positionToSpawn += UtilityTools.GenerateRandomPositionSquarePattern(new Vector2(5f, 5f));
+            SpawnManager.instance.SpawnObject(positionToSpawn, stageData.stageEvents[eventIndexer].objectToSpawn);
+        }
+           
     }
 }
