@@ -1,32 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowingKnifeWeapon : WeaponBase
+public class GunWeapon : WeaponBase
 {
-
-    [SerializeField] GameObject knifePrefab;
-    [SerializeField] float spread = 0.5f;
-
- 
+    [SerializeField] GameObject bulletPrefabs;
     public override void Attack()
     {
-
         UpdateVectorOfAttack();
 
-        for(int i = 0; i< weaponStats.numberOfAttacks; i++)
+        for (int i = 0; i < weaponStats.numberOfAttacks; i++)
         {
-            GameObject thrownKnife = Instantiate(knifePrefab);
+            GameObject thrownKnife = Instantiate(bulletPrefabs);
 
             Vector3 newKnifePosition = transform.position;
 
-            if(weaponStats.numberOfAttacks > i)
-            {
-                newKnifePosition.y -= (spread * (weaponStats.numberOfAttacks-1)) / 2; // calculating offset
-                newKnifePosition.y += i * spread;
-            }
-            
 
             thrownKnife.transform.position = newKnifePosition;
 
@@ -36,6 +24,5 @@ public class ThrowingKnifeWeapon : WeaponBase
             throwingDaggerProjectile.damage = GetDamage();
         }
 
-        
     }
 }

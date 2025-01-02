@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01cc40df30e11784eaeaef80298bc0a9, type: 3}
   m_Name: Data Container
   m_EditorClassIdentifier: 
-  coins: 0
-  stageCompletion: 00
+  coins: 682
+  stageCompletion: 01
+  upgrades:
+  - persistentUpgrades: 0
+    level: 10
+    max_level: 10
+    costToUpgrade: 100
+  - persistentUpgrades: 1
+    level: 10
+    max_level: 10
+    costToUpgrade: 100

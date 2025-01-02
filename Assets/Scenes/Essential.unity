@@ -1083,9 +1083,11 @@ MonoBehaviour:
   armor: 0
   hpRegenerationRate: 0
   hpRegenerationTimer: 3
+  damageBonus: 0
   hpBar: {fileID: 2099517216}
   level: {fileID: 0}
   coins: {fileID: 0}
+  dataContainer: {fileID: 11400000, guid: 21b1ccb54d239b74fbb7c0db676b8bfb, type: 2}
 --- !u!114 &392343336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,7 +1160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponObjectsContainer: {fileID: 1175539449}
-  startingWeapon: {fileID: 11400000, guid: 71743d58e938a98489b816a26454862c, type: 2}
+  startingWeapon: {fileID: 11400000, guid: 5c64a24676ea91e45a5d4c8fa210d58a, type: 2}
 --- !u!1 &409125549
 GameObject:
   m_ObjectHideFlags: 0

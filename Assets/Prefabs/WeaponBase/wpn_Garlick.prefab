@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3450834057712384713
+--- !u!1 &5590388441429652661
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2040985468141687152}
-  - component: {fileID: 943834198238973227}
+  - component: {fileID: 8137262064488439198}
+  - component: {fileID: 7750123910943412730}
   m_Layer: 0
-  m_Name: wpn-ThrowingKnife
+  m_Name: wpn_Garlick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2040985468141687152
+--- !u!4 &8137262064488439198
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450834057712384713}
+  m_GameObject: {fileID: 5590388441429652661}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &943834198238973227
+--- !u!114 &7750123910943412730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450834057712384713}
+  m_GameObject: {fileID: 5590388441429652661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678a8929eaeed024e9a5faf630000e0e, type: 3}
+  m_Script: {fileID: 11500000, guid: b5831dd132aad894e96edea040f9abc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: d404235e8b3e9da4eabec1ed6cf236e8, type: 2}
   weaponStats:
     damage: 0
     timeToAttack: 0
     numberOfAttacks: 0
-  vectorOfAttack: {x: 0, y: 0}
-  attackDirection: 2
-  knifePrefab: {fileID: 4515916289330212519, guid: 44441bea20456f34084524603135b73c, type: 3}
-  spread: 0.5
+  attackAreaSize: 3

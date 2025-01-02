@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94940f6d6bf1df43b90ecffcd57f2a7, type: 3}
+  m_Name: wd_Garlick
+  m_EditorClassIdentifier: 
+  Name: Garlick
+  stats:
+    damage: 1
+    timeToAttack: 1
+    numberOfAttacks: 1
+  weaponBasePrefabs: {fileID: 5590388441429652661, guid: 912345353c19e4e41bd57bc9be4cf83d, type: 3}
+  upgrades: []
